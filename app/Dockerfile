@@ -1,15 +1,8 @@
 FROM node:lts
-
 WORKDIR /srv/app
-
-# copy source code
+COPY package.json .
+COPY package-lock.json .
+RUN npm ci
 COPY . .
-
-# install npm
-RUN npm install
-
-# build
 RUN npm run build
-
-# start
 CMD ["npm", "run", "start"]
