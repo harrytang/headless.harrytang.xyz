@@ -1,7 +1,7 @@
 version: '3'
 services:
   strapi:
-    build: ./app
+    image: ghcr.io/harrytang/headless.harrytang.xyz:main
     environment:
       DATABASE_CLIENT: mysql
       DATABASE_HOST: mariadb
