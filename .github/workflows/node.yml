@@ -26,9 +26,13 @@ jobs:
         run: |
           docker build ./app --tag ghcr.io/${{ github.repository }}:${{ github.ref_name }}
           docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+        env:
+          URL: https://headless.harrytang.xyz
       - name: Build prod image
         if: github.ref_name != 'main'
         run: |
           docker build ./app --tag ghcr.io/${{ github.repository }}:${{ github.ref_name }} --tag ghcr.io/${{ github.repository }}:latest
           docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
           docker push ghcr.io/${{ github.repository }}:latest
+        env:
+          URL: https://headless.harrytang.xyz
