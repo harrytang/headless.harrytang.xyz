@@ -16,7 +16,13 @@ module.exports = ({ env }) => [
         useDefaults: true,
         directives: {
           "connect-src": ["'self'", "https:"],
-          "img-src": ["'self'", "data:", "blob:", env("AWS_BUCKET_BASE")],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://dl.airtable.com",
+            env("AWS_BUCKET_BASE"),
+          ],
           "media-src": ["'self'", "data:", "blob:", env("AWS_BUCKET_BASE")],
           upgradeInsecureRequests: null,
         },
