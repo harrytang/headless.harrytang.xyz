@@ -6,21 +6,19 @@ name: Node CI
 on:
   push:
     branches: [main]
-    tags: [v*]
-  pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-
-      - uses: actions/checkout@v2
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
@@ -32,11 +30,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./
-          file: ./Dockerfile
-          platforms: linux/arm64, linux/amd64
+          context: .
+          platforms: linux/arm64,linux/amd64
           push: true
-          tags: |
-            ghcr.io/${{github.repository}}:latest
+          tags: ghcr.io/${{github.repository}}:latest
         env:
           URL: https://headless.harrytang.xyz
