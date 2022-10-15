@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: headless-harrytang-xyz-depl
+  namespace: harrytang-xyz
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: headless-harrytang-xyz
+  template:
+    metadata:
+      labels:
+        app: headless-harrytang-xyz
+    spec:
+      containers:
+        - name: headless-harrytang-xyz
+          image: ghcr.io/harrytang/headless.harrytang.xyz:latest
+          envFrom:
+            - secretRef:
+                name: env
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "0.25"
+            limits:
+              memory: "256Mi"
+              cpu: "0.5"
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless-harrytang-xyz-srv
+  namespace: harrytang-xyz
+spec:
+  selector:
+    app: headless-harrytang-xyz
+  ports:
+    - name: headless-harrytang-xyz
+      protocol: TCP
+      port: 1337
+      targetPort: 1337
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: headless-harrytang-xyz-ingress
+  namespace: harrytang-xyz
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+spec:
+  tls:
+    - hosts:
+        - headless.harrytang.xyz
+      secretName: headless-harrytang-xyz-cert-tls
+  rules:
+    - host: headless.harrytang.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: headless-harrytang-xyz-srv
+                port:
+                  number: 1337

@@ -55,3 +55,10 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+## k8s config
+
+```bash
+kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=harrytang --docker-password=xxx -n harrytang-xyz
+kubectl create secret generic env --from-env-file=./.env.prod -n harrytang-xyz
+```
