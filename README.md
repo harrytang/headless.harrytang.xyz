@@ -62,3 +62,20 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=harrytang --docker-password=xxx -n harrytang-xyz
 kubectl create secret generic env --from-env-file=./.env.prod -n harrytang-xyz
 ```
+
+## S3 config
+
+- Uncheck `Block all public access`
+- Check `ACLs enabled`
+- Cross-origin resource sharing (CORS)
+
+  ```json
+  [
+    {
+      "AllowedHeaders": [],
+      "AllowedMethods": ["GET", "PUT", "POST", "DELETE", "HEAD"],
+      "AllowedOrigins": ["*"],
+      "ExposeHeaders": []
+    }
+  ]
+  ```
