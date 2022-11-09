@@ -6,7 +6,8 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "release": "npx standard-version && git push --follow-tags origin main"
   },
   "dependencies": {
     "@palmabit/strapi-app-version": "^1.0.1",
@@ -28,5 +29,10 @@
     "node": ">=12.x.x <=v18.12.1",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "husky": "^8.0.2"
+  }
 }
