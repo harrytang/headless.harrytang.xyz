@@ -46,6 +46,7 @@ jobs:
 
       - name: Install kubectl
         uses: azure/setup-kubectl@v3
+        id: install-kubectl
 
       - name: Set the Kubernetes context
         if: github.ref_name == 'main'

@@ -1,5 +1,7 @@
 # 🚀 Getting started with Strapi
 
+[![Node CI](https://github.com/harrytang/headless.harrytang.xyz/actions/workflows/node.yml/badge.svg)](https://github.com/harrytang/headless.harrytang.xyz/actions/workflows/node.yml)
+
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
 ### `develop`
