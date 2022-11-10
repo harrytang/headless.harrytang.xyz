@@ -23,9 +23,7 @@
   "author": {
     "name": "Harry Tang"
   },
-  "strapi": {
-    "uuid": "29a870f1-59ce-4f6b-a7ad-e3f21190bb63"
-  },
+  "strapi": {},
   "engines": {
     "node": ">=12.x.x <=v18.12.1",
     "npm": ">=6.0.0"
