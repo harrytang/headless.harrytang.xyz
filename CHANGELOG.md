@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/harrytang/headless.harrytang.xyz/compare/v1.0.0...v1.1.0) (2022-11-10)
+
+
+### Features
+
+* add SEO plugin ([8a2f7f7](https://github.com/harrytang/headless.harrytang.xyz/commit/8a2f7f711f51c3466302fc05e8c351f91561f4ec))
+
 ## 1.0.0 (2022-11-09)
 
 
