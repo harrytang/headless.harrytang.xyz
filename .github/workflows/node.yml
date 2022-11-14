@@ -6,6 +6,8 @@ name: Node CI
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -38,6 +40,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: self-hosted
     steps:
