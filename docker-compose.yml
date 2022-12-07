@@ -1,0 +1,25 @@
+version: "3"
+volumes:
+  db_data:
+    driver: local
+services:
+  db:
+    container_name: mariadb
+    image: mariadb
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      POSTGRES_USER: root
+      MARIADB_DATABASE: db
+  strapi:
+    container_name: strapi
+    build: .
+    image: ghcr.io/harrytang/headless.harrytang.xyz
+    command: npm run develop
+    ports:
+      - "1337:1337"
+    depends_on:
+      - db
+    volumes:
+      - ./:/srv/app

@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:lts-alpine
 WORKDIR /srv/app
 COPY package.json .
 COPY package-lock.json .
