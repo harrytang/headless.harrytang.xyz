@@ -8,25 +8,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [lts/*]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm test
-
   build:
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -56,9 +38,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
-    if: github.event_name != 'pull_request'
     needs: build
-    runs-on: self-hosted
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
@@ -76,5 +56,8 @@ jobs:
 
       - name: Deploy to the Kubernetes cluster
         if: github.ref_name == 'main'
-        run: |
-          ${{ steps.install-kubectl.outputs.kubectl-path }} rollout restart deploy headless-harrytang-xyz-depl -n harrytang-xyz
+        ses: dbritto-dev/openvpn3-action@v2
+        with:
+          vpn-client-config: ${{ secrets.OVPN_CONFIG }}
+          script: |
+            ${{ steps.install-kubectl.outputs.kubectl-path }} rollout restart deploy headless-harrytang-xyz-depl -n harrytang-xyz
