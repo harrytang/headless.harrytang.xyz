@@ -60,6 +60,6 @@ jobs:
         uses: dbritto-dev/openvpn3-action@main
         with:
           vpn-client-config: ${{ secrets.OVPN_CONFIG }}
-          vpn-autoload-config: W10K
+          vpn-autoload-config: e30K
           script: |
             ${{ steps.install-kubectl.outputs.kubectl-path }} rollout restart deploy headless-harrytang-xyz-depl -n harrytang-xyz
