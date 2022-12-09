@@ -56,7 +56,7 @@ jobs:
 
       - name: Deploy to the Kubernetes cluster
         if: github.ref_name == 'main'
-        ses: dbritto-dev/openvpn3-action@v2
+        uses: dbritto-dev/openvpn3-action@v2
         with:
           vpn-client-config: ${{ secrets.OVPN_CONFIG }}
           script: |
