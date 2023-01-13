@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@strapi/plugin-graphql": "4.5.5",
+    "@strapi/plugin-graphql": "4.5.6",
     "@strapi/plugin-i18n": "4.5.5",
     "@palmabit/strapi-app-version": "1.1.0",
     "@strapi/plugin-seo": "1.7.7",
