@@ -24,7 +24,7 @@
     "@strapi/plugin-graphql": "4.6.1",
     "@strapi/plugin-i18n": "4.6.1",
     "@palmabit/strapi-app-version": "1.1.0",
-    "@strapi/plugin-seo": "1.7.7",
+    "@strapi/plugin-seo": "1.8.0",
     "@strapi/plugin-users-permissions": "4.6.1",
     "@strapi/provider-email-mailgun": "4.6.1",
     "@strapi/provider-upload-aws-s3": "4.6.1",
